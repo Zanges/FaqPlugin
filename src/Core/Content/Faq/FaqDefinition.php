@@ -8,7 +8,10 @@ use Shopware\Core\Framework\DataAbstractionLayer\Field\BoolField;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\Flag\PrimaryKey;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\Flag\Required;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\IdField;
-use Shopware\Core\Framework\DataAbstractionLayer\Field\StringField;
+use Shopware\Core\Framework\DataAbstractionLayer\Field\LongTextField;
+use Shopware\Core\Content\Product\ProductDefinition;
+use Shopware\Core\Framework\DataAbstractionLayer\Field\FkField;
+use Shopware\Core\Framework\DataAbstractionLayer\Field\ManyToOneAssociationField;
 
 class FaqDefinition extends EntityDefinition
 {
@@ -31,11 +34,23 @@ class FaqDefinition extends EntityDefinition
 
     protected function defineFields(): FieldCollection
     {
+        /*
+         * IdField id
+         * BoolField active
+         * StringField question
+         * StringField answer
+         * FkField product_id
+         * ManyToOneAssociation product
+         * 
+         * required: id, active, question, product_id
+         */
         return new FieldCollection([
             (new IdField('id', 'id'))->addFlags(new Required(), new PrimaryKey()),
-            (new StringField('name', 'name')),
-            (new StringField('description', 'description')),
-            (new BoolField('active', 'active'))
+            (new BoolField('active', 'active'))->addFlags(new Required()),
+            (new LongTextField('question', 'question'))->addFlags(new Required()),
+            (new LongTextField('answer', 'answer')),
+            (new FkField('product_id', 'productId', ProductDefinition::class)),
+            (new ManyToOneAssociationField('product', 'product_id', ProductDefinition::class)),
         ]);
     }
 }
