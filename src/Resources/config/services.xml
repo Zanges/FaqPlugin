@@ -10,5 +10,9 @@
             <tag name="shopware.entity.definition" entity="faq" />
         </service>
 
+        <service id="FaqPlugin\Core\Content\Faq\Product\FaqProductExtension">
+            <tag name="shopware.entity.extension"/>
+        </service>
+
     </services>
 </container>

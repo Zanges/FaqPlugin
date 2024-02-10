@@ -8,7 +8,7 @@ use Shopware\Core\Framework\DataAbstractionLayer\FieldCollection;
 use Shopware\Core\Content\Product\ProductDefinition;
 use FaqPlugin\Core\Content\Faq\FaqDefinition;
 
-class ProductExtension extends EntityExtension
+class FaqProductExtension extends EntityExtension
 {
     public function extendFields(FieldCollection $collection): void
     {
