@@ -38,8 +38,7 @@ class Migration1707751145Faq extends MigrationStep
         `created_at` DATETIME(3) NOT NULL,
         `updated_at` DATETIME(3),
         PRIMARY KEY (`id`),
-        CONSTRAINT `uniq.faq.product_id` UNIQUE (`product_id`),
-        CONSTRAINT `json.faq.product_id` CHECK (JSON_VALID(`product_id`)),
+        KEY `fk.faq.product_id` (`product_id`),
         CONSTRAINT `fk.faq.product_id` FOREIGN KEY (`product_id`)
           REFERENCES `product` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
       ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
