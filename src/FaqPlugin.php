@@ -8,12 +8,14 @@ use Shopware\Core\Framework\Plugin\Context\DeactivateContext;
 use Shopware\Core\Framework\Plugin\Context\InstallContext;
 use Shopware\Core\Framework\Plugin\Context\UninstallContext;
 use Shopware\Core\Framework\Plugin\Context\UpdateContext;
+use Shopware\Core\Framework\DataAbstractionLayer\Indexing\InheritanceUpdater;
+use Doctrine\DBAL\Connection;
+
 
 class FaqPlugin extends Plugin
 {
     public function install(InstallContext $installContext): void
     {
-        // Do stuff such as creating a new payment method
     }
 
     public function uninstall(UninstallContext $uninstallContext): void
@@ -23,14 +25,22 @@ class FaqPlugin extends Plugin
         if ($uninstallContext->keepUserData()) {
             return;
         }
+        
+        $connection = $this->container->get(Connection::class);
 
-        // Remove or deactivate the data created by the plugin
+        $connection->executeStatement('DROP TABLE IF EXISTS `faq`');
+
+        $connection->executeStatement('ALTER TABLE `product` DROP COLUMN `faqs`');
     }
 
     public function activate(ActivateContext $activateContext): void
     {
         // Activate entities, such as a new payment method
         // Or create new entities here, because now your plugin is installed and active for sure
+
+      // run inheritance updater
+      // $inheritanceUpdater = $this->container->get(InheritanceUpdater::class);
+      // $inheritanceUpdater->update('faq', [], $activateContext->getContext());
     }
 
     public function deactivate(DeactivateContext $deactivateContext): void

@@ -7,13 +7,14 @@ use Shopware\Core\Framework\DataAbstractionLayer\Field\ManyToOneAssociationField
 use Shopware\Core\Framework\DataAbstractionLayer\FieldCollection;
 use Shopware\Core\Content\Product\ProductDefinition;
 use FaqPlugin\Core\Content\Faq\FaqDefinition;
+use Shopware\Core\Framework\DataAbstractionLayer\Field\Flag\Inherited;
 
 class FaqProductExtension extends EntityExtension
 {
     public function extendFields(FieldCollection $collection): void
     {
         $collection->add(
-            new ManyToOneAssociationField('faqs', 'id', 'product_id', FaqDefinition::class, true)
+            (new ManyToOneAssociationField('faqs', 'faqs', FaqDefinition::class, 'product_id', true))->addFlags(new Inherited())
         );
     }
 
