@@ -1,0 +1,13 @@
+{
+  "faq": {
+      "general": {
+          "mainMenuItemGeneral": "FAQ",
+          "descriptionTextModule": "Verwaltung von FAQ-Einträge"
+      },
+      "list": {
+          "addButtonText": "FAQ-Eintrag hinzufügen",
+          "columnQuestion": "Frage",
+          "columnAnswer": "Antwort"
+      }
+  }
+}
