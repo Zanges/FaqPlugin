@@ -1,0 +1,55 @@
+{% block faq_detail %}
+  <sw-page class="faq-detail">
+    {% block faq_detail_smart_bar_actions %}
+      <template #smart-bar-actions>
+        <sw-button :router-link="{ name: 'zanges.faq.list' }">
+          {{ $tc('faq.detail.cancelButtonText') }}
+        </sw-button>
+
+        <sw-button-process
+          :isLoading="isLoading"
+          :processSuccess="processSuccess"
+          variant="primary"
+          @process-finish="saveFinish"
+          @click="onClickSave"
+        >
+          {{ $tc('faq.detail.saveButtonText') }}
+        </sw-button-process>
+      </template>
+    {% endblock %}
+
+    <template #content>
+      {% block faq_detail_content %}
+        <sw-card-view>
+          <sw-card v-if="faq" :isLoading="isLoading" positionIdentifier=1>
+
+            <sw-checkbox-field
+              v-model="faq.active"
+              :label="$tc('faq.detail.activeLabel')">
+            </sw-checkbox-field>
+
+            <sw-textarea-field
+              v-model="faq.question"
+              :label="$tc('faq.detail.questionLabel')"
+              type="textarea">
+            </sw-textarea-field>
+
+            <sw-textarea-field
+              v-model="faq.answer"
+              :label="$tc('faq.detail.answerLabel')"
+              type="textarea">
+            </sw-textarea-field>
+
+            <sw-entity-single-select
+              v-model="faq.product"
+              entity="product"
+              :localMode="faq.isNew()"
+              :label="$tc('faq.detail.productAssociationLabel')">
+            </sw-entity-single-select>
+
+          </sw-card>
+        </sw-card-view>
+      {% endblock %}
+    </template>
+  </sw-page>
+{% endblock %}

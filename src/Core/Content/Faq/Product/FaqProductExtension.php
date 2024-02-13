@@ -3,7 +3,7 @@
 namespace FaqPlugin\Core\Content\Faq\Product;
 
 use Shopware\Core\Framework\DataAbstractionLayer\EntityExtension;
-use Shopware\Core\Framework\DataAbstractionLayer\Field\ManyToOneAssociationField;
+use Shopware\Core\Framework\DataAbstractionLayer\Field\OneToManyAssociationField;
 use Shopware\Core\Framework\DataAbstractionLayer\FieldCollection;
 use Shopware\Core\Content\Product\ProductDefinition;
 use FaqPlugin\Core\Content\Faq\FaqDefinition;
@@ -14,7 +14,7 @@ class FaqProductExtension extends EntityExtension
     public function extendFields(FieldCollection $collection): void
     {
         $collection->add(
-            (new ManyToOneAssociationField('faqs', 'faqs', FaqDefinition::class, 'product_id', true))->addFlags(new Inherited())
+            (new OneToManyAssociationField('faqs', 'faqs', FaqDefinition::class, 'id', true))->addFlags(new Inherited())
         );
     }
 

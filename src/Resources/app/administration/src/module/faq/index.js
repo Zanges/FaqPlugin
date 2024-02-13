@@ -2,6 +2,8 @@ import deDE from './snippet/de-DE';
 import enGB from './snippet/en-GB';
 
 import './page/faq-list';
+import './page/faq-create';
+import './page/faq-detail';
 
 Shopware.Module.register('zanges-faq', {
     type: 'plugin',
@@ -9,7 +11,6 @@ Shopware.Module.register('zanges-faq', {
     title: 'faq.general.mainMenuItemGeneral',
     description: 'faq.general.descriptionTextModule',
     color: '#ff3d58',
-    icon: 'default-shopping-paper-bag-product',
     entity: 'faq',
 
     snippets: {
@@ -26,14 +27,14 @@ Shopware.Module.register('zanges-faq', {
             component: 'faq-create',
             path: 'create',
             meta: {
-                parentPath: 'faq.list'
+                parentPath: 'zanges.faq.list'
             }
         },
         detail: {
             component: 'faq-detail',
             path: 'detail/:id',
             meta: {
-                parentPath: 'faq.list'
+                parentPath: 'zanges.faq.list'
             }
         }
      },
@@ -44,7 +45,6 @@ Shopware.Module.register('zanges-faq', {
         label: 'faq.general.mainMenuItemGeneral',
         color: '#ff3d58',
         path: 'zanges.faq.list',
-        icon: 'default-shopping-paper-bag-product',
         position: 80
     }]
 });

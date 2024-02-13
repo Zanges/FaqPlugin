@@ -36,7 +36,7 @@ class Migration1707751145Faq extends MigrationStep
         `answer` LONGTEXT,
         `product_id` BINARY(16) NOT NULL,
         `created_at` DATETIME(3) NOT NULL,
-        `updated_at` DATETIME(3),
+        `updated_at` DATETIME(3) NULL,
         PRIMARY KEY (`id`),
         KEY `fk.faq.product_id` (`product_id`),
         CONSTRAINT `fk.faq.product_id` FOREIGN KEY (`product_id`)

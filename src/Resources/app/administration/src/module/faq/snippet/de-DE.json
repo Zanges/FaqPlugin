@@ -1,13 +1,22 @@
 {
   "faq": {
-      "general": {
-          "mainMenuItemGeneral": "FAQ",
-          "descriptionTextModule": "Verwaltung von FAQ-Einträge"
-      },
-      "list": {
-          "addButtonText": "FAQ-Eintrag hinzufügen",
-          "columnQuestion": "Frage",
-          "columnAnswer": "Antwort"
-      }
+    "general": {
+      "mainMenuItemGeneral": "FAQ",
+      "descriptionTextModule": "Verwalten Sie Ihre FAQ-Einträge"
+    },
+    "list": {
+      "addButtonText": "FAQ hinzufügen",
+      "columnQuestion": "Frage",
+      "columnAnswer": "Antwort"
+    },
+    "detail": {
+      "errorTitle": "Fehler",
+      "cancelButtonText": "Abbrechen",
+      "saveButtonText": "Speichern",
+      "questionLabel": "Frage",
+      "answerLabel": "Antwort",
+      "activeLabel": "Aktiv",
+      "productAssociationLabel": "Produktzuordnung"
+    }
   }
 }
